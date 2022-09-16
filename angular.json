@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-blog": {
+    "myStackOverflow": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "my-blog:build:production"
+              "browserTarget": "myStackOverflow:build:production"
             },
             "development": {
-              "browserTarget": "my-blog:build:development"
+              "browserTarget": "myStackOverflow:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-blog:build"
+            "browserTarget": "myStackOverflow:build"
           }
         },
         "test": {
@@ -109,11 +109,11 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://olgaskalaban.github.io/my-blog/"
+            "baseHref": "https://olgaskalaban.github.io/myStackOverflow/"
           }
         }
       }
     }
   },
-  "defaultProject": "my-blog"
+  "defaultProject": "myStackOverflow"
 }
