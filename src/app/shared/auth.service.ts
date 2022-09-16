@@ -13,7 +13,7 @@ export class AuthService {
    email: ''
   }
 
-  public isLoginSource = new BehaviorSubject<boolean>(!this.checkLS());
+  public loginStateSource = new BehaviorSubject<boolean>(!this.checkLS());
 
   constructor(private fireAuth: AngularFireAuth) { }
 
@@ -45,7 +45,7 @@ export class AuthService {
   async logout(): Promise<void> {
     await this.fireAuth.signOut();
     localStorage.removeItem('userInfo');
-    this.isLoginSource.next(true);
+    this.loginStateSource.next(true);
   }
 
   async googleSignIn() {
@@ -82,7 +82,7 @@ export class AuthService {
   setUserData(email: string): void {
     this.user.email = email;
     localStorage.setItem('userInfo', JSON.stringify(this.user));
-    this.isLoginSource.next(false);
+    this.loginStateSource.next(false);
   }
 
   handleError(err: any): string {
