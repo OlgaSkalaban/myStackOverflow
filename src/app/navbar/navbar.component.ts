@@ -15,7 +15,7 @@ export class NavbarComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.subscription = this.authService.loginStateSource.subscribe( {next: (value) => this.isShowLogoutBtn = value} )
+    this.subscription = this.authService.isUserLoggedIn$.subscribe( {next: (value) => this.isShowLogoutBtn = !value} )
   }
 
   logout() {

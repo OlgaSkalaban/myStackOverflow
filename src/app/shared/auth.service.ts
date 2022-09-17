@@ -13,7 +13,7 @@ export class AuthService {
    email: ''
   }
 
-  public loginStateSource = new BehaviorSubject<boolean>(!this.checkLS());
+  public isUserLoggedIn$ = new BehaviorSubject<boolean>(this.checkLS());
 
   constructor(private fireAuth: AngularFireAuth) { }
 
@@ -45,29 +45,30 @@ export class AuthService {
   async logout(): Promise<void> {
     await this.fireAuth.signOut();
     localStorage.removeItem('userInfo');
-    this.loginStateSource.next(true);
+    this.isUserLoggedIn$.next(false);
   }
 
   async googleSignIn() {
     const res = await this.fireAuth.signInWithPopup(new GoogleAuthProvider);
-    if (res.user?.uid && res.user?.displayName) {
-      this.setUserData(res.user?.displayName);
+    console.log(res);
+    if (res.user?.uid && res.user?.email) {
+      this.setUserData(res.user?.email);
     }
     return res;
   }
 
   async signInFacebook() {
     const res = await this.fireAuth.signInWithPopup(new FacebookAuthProvider);
-    if (res.user?.uid && res.user?.displayName) {
-      this.setUserData(res.user?.displayName);
+    if (res.user?.uid && res.user?.email) {
+      this.setUserData(res.user?.email);
     }
     return res;
   }
 
   async signInGithub() {
     const res = await this.fireAuth.signInWithPopup(new GithubAuthProvider);
-    if (res.user?.uid && res.user?.displayName) {
-      this.setUserData(res.user?.displayName);
+    if (res.user?.uid && res.user?.email) {
+      this.setUserData(res.user?.email);
     }
     return res;
   }
@@ -82,7 +83,7 @@ export class AuthService {
   setUserData(email: string): void {
     this.user.email = email;
     localStorage.setItem('userInfo', JSON.stringify(this.user));
-    this.loginStateSource.next(false);
+    this.isUserLoggedIn$.next(true);
   }
 
   handleError(err: any): string {
