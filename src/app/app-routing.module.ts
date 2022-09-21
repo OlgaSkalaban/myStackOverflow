@@ -5,6 +5,7 @@ import { SignupFormComponent } from './auth/signup-form/signup-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomeGuard } from './guards/home.guard';
 import { LoginGuard } from './guards/login.guard';
+import {PostPageComponent} from "./post-page/post-page.component";
 
 const routes: Routes = [];
 
@@ -13,7 +14,9 @@ const routes: Routes = [];
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginFormComponent, canActivate: [LoginGuard]},
     {path: 'signup', component: SignupFormComponent, canActivate: [LoginGuard]},
-    {path: 'home', component: HomePageComponent, canActivate: [HomeGuard]},
+    {path: 'home', component: HomePageComponent, canActivate: [HomeGuard], children:[
+        {path: 'post/:id', component: PostPageComponent}
+      ]},
     {path: '**', redirectTo: 'login'}
   ])],
   exports: [RouterModule]

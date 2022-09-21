@@ -11,6 +11,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PostPageComponent } from './post-page/post-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomePageComponent,
     SignupFormComponent,
     LoginFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,
