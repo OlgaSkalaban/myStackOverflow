@@ -12,6 +12,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostPageComponent } from './post-page/post-page.component';
+import { QuestionComponent } from './shared/question/question.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostPageComponent } from './post-page/post-page.component';
     SignupFormComponent,
     LoginFormComponent,
     NavbarComponent,
-    PostPageComponent
+    PostPageComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

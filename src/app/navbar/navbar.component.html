@@ -1,6 +1,13 @@
 <nav class="navbar bg-warning">
     <div class="container-fluid">
-      <a class="navbar-brand h1" routerLink="/home">L O G O</a>
-      <button [hidden]="isShowLogoutBtn" type="button" class="btn btn-outline-dark text-center" (click)="logout()">Logout</button>
+      <a class="navbar-brand h1" routerLink="/home">myStackOverflow</a>
+      <div class="group-btn">
+        <button
+          [hidden]="isShowLogoutBtn"
+          type="button"
+          class="btn btn-outline-dark text-center"
+          [routerLink]="['/questions/ask']">Add question</button>
+        <button [hidden]="isShowLogoutBtn" type="button" class="btn btn-outline-dark text-center" (click)="logout()">{{userName}}</button>
+      </div>
     </div>
 </nav>
